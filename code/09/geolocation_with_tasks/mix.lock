@@ -1,2 +1,5 @@
-%{"geolix": {:git, "git://github.com/mneudert/geolix.git", "cf8c265f4403ee4aebb3e04b41e4ebd8b9ef377f", []},
-  "poolboy": {:hex, :poolboy, "1.4.2"}}
+%{
+  "geolix": {:git, "https://github.com/mneudert/geolix.git", "f49c30a2bf22df0040063cf238d8165b014034ed", []},
+  "mmdb2_decoder": {:hex, :mmdb2_decoder, "0.2.0", "34346c43bb1860d38d5505e5edf3d5e31a0d9fce4ee48f0c8c762875bcd05bb2", [:mix], [], "hexpm"},
+  "poolboy": {:hex, :poolboy, "1.4.2", "619519c7708dd001ce9b61908218d03ff582c3ba44a1e129d694376c2b332d87", [:rebar], [], "hexpm"},
+}
