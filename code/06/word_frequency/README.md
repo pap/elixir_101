@@ -1,4 +1,10 @@
 WordFrequency
 =============
+```
+mix escript.build
+```
 
-** TODO: Add description **
+```
+./word_frequency --file walt_whitman.txt
+```
+

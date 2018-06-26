@@ -1,4 +1,0 @@
-CowboyApp
-=========
-
-** TODO: Add description **

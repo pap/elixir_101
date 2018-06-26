@@ -15,10 +15,10 @@ defmodule Geolocator do
     Enum.map(ip_list, fn(x) -> locate(x) end)
   end
 
-  def locate(ip) do
+  defp locate(ip) do
     case Geolix.lookup(ip) do
-      %{country: country} ->
-        location = get_in(country, [:country, :names, :en])
+      %{country: data} ->
+        location = data.country.names.en
         IO.puts "IP: #{ip}  Country: #{location}"
       _ ->
         IO.puts "Could not determine the location of IP #{ip}"

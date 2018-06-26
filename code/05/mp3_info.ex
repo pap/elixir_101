@@ -2,21 +2,7 @@ defmodule Mp3Info do
 
   @file_name "Divider.mp3"
 
-  def id3_v2_basic_info(input_file \\ @file_name) do
-    {:ok, mp3_file} = File.read(input_file)
-    <<  tag_id   :: binary-size(3),
-        major_v  :: unsigned-integer-size(8),
-        revision :: unsigned-integer-size(8),
-        _        :: bitstring >> = mp3_file
-    IO.puts """
-    [ID3v2 Info]
-    Tag:            #{tag_id}
-    Major Version:  #{major_v}
-    Revision:       #{revision}
-    """
-  end
-
-  def id3_v1_info(input_file \\ @file_name) do
+  def read_info(input_file \\ @file_name) do
     {:ok, mp3_file} = File.read(input_file)
     mp3_size_without_id3 = (byte_size(mp3_file) - 128)
     << _ :: binary-size(mp3_size_without_id3), id3_v1_tag_data :: binary >> = mp3_file
@@ -42,10 +28,10 @@ defmodule Mp3Info do
 
   def write_info(input_file \\ @file_name, output_file \\ "new.mp3") do
     {:ok, mp3_file} = File.read(input_file)
-    tag      = "TAG"
+    tag      = "A TAG"
     author   = pad("Chris Zabriskie", 30)
     title    = pad("Divider", 30)
-    album    = pad("Divider", 30)
+    album   = pad("Divider", 30)
     year     = "2011"
     comments = pad("Copyright: Creative Commons", 30)
 
@@ -59,7 +45,7 @@ defmodule Mp3Info do
 
 
   defp pad(string, desired_size) do
-    String.ljust(string,desired_size)
+    String.pad_trailing(string, desired_size)
   end
 
 end
